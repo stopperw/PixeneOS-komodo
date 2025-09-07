@@ -1,7 +1,7 @@
 {
   "version": 2,
   "full": {
-    "location_ota": "https://github.com/pixincreate/PixeneOS/releases/download/2025070800/komodo-2025070800-rootless-adac267.zip",
-    "location_csig": "https://github.com/pixincreate/PixeneOS/releases/download/2025070800/komodo-2025070800-rootless-adac267.zip.csig"
+    "location_ota": "https://github.com/stopperw/PixeneOS-komodo/releases/download/2025090600/komodo-2025090600-rootless-abb601e.zip",
+    "location_csig": "https://github.com/stopperw/PixeneOS-komodo/releases/download/2025090600/komodo-2025090600-rootless-abb601e.zip.csig"
   }
 }
