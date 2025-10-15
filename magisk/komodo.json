@@ -1,7 +1,7 @@
 {
   "version": 2,
   "full": {
-    "location_ota": "https://github.com/stopperw/PixeneOS-komodo/releases/download/2025090600/komodo-2025090600-magisk-30200-abb601e.zip",
-    "location_csig": "https://github.com/stopperw/PixeneOS-komodo/releases/download/2025090600/komodo-2025090600-magisk-30200-abb601e.zip.csig"
+    "location_ota": "https://github.com/stopperw/PixeneOS-komodo/releases/download/2025100900/komodo-2025100900-magisk-30400-c328812.zip",
+    "location_csig": "https://github.com/stopperw/PixeneOS-komodo/releases/download/2025100900/komodo-2025100900-magisk-30400-c328812.zip.csig"
   }
 }
