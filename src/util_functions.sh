@@ -253,7 +253,7 @@ function my_avbroot_setup() {
   echo -e "Running script modifications..."
 
   # Update location path to use GitHub releases
-  sed -i -e "s|generate_update_info(update_info, args.output.name)|generate_update_info(update_info, '${location_path}')|" "${setup_script}"
+  sed -i -e "s/generate_update_info\(update_info, args.output.name\)/generate_update_info\(update_info, '${location_path}'\)/" "${setup_script}"
 }
 
 # Function to setup the environment variables and paths for patching the OTA
