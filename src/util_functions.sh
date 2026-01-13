@@ -376,7 +376,7 @@ function url_constructor() {
   # If the script is running in interactive mode, prompt the user to overwrite the existing files
   if [[ "${INTERACTIVE_MODE}" == 'true' ]]; then
     if [[ -e "${WORKDIR}/tools/${repository}" || -e "${WORKDIR}/modules/${repository}.zip" || -e "${WORKDIR}/signatures/${repository}.zip.sig" ]]; then
-      echo -n "Warning: \`${repository}\` already exists in \`${WORKDIR}\`\nOverwrite? (y/n) [default: yes]: "
+      echo -n "Warning: \`${repository}\` already exists in \`${WORKDIR}\`\nOverwrite? Y/n: "
       read -r confirm
       confirm=${confirm:-"yes"}
       if [[ $confirm =~ ^[yY](es|ES)?$ ]]; then
