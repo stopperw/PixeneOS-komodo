@@ -1,5 +1,7 @@
 # PixeneOS (GrapheneOS++)
 
+sda10
+
 ## Description
 
 PixeneOS is a `shell` script designed to patch GrapheneOS OTA (Over The Air) images with custom modules, providing additional features. This tool relies heavily on upstream projects for its functionality.
