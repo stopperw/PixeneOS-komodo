@@ -498,11 +498,11 @@ function supported_tools() {
     return
   fi
 
-  echo -e "Supported tools:"
-  for tool in "${tools[@]}"; do
-    echo -e "- ${tool}"
-  done
-  echo -e "- magisk"
+  # echo -e "Supported tools:"
+  # for tool in "${tools[@]}"; do
+  #   echo -e "- ${tool}"
+  # done
+  # echo -e "- magisk"
 }
 
 function help() {
