@@ -253,7 +253,7 @@ function my_avbroot_setup() {
   echo -e "Running script modifications..."
 
   # Update location path to use GitHub releases
-  sed -i -e "s/generate_update_info\(update_info, args.output.name\)/generate_update_info\(update_info, '${location_path}'\)/" "${setup_script}"
+  sed -i -e "s|generate_update_info(update_info, args.output.name)|generate_update_info(update_info, '${location_path}')|" "${setup_script}"
 }
 
 # Function to setup the environment variables and paths for patching the OTA
@@ -376,7 +376,7 @@ function url_constructor() {
   # If the script is running in interactive mode, prompt the user to overwrite the existing files
   if [[ "${INTERACTIVE_MODE}" == 'true' ]]; then
     if [[ -e "${WORKDIR}/tools/${repository}" || -e "${WORKDIR}/modules/${repository}.zip" || -e "${WORKDIR}/signatures/${repository}.zip.sig" ]]; then
-      echo -n "Warning: \`${repository}\` already exists in \`${WORKDIR}\`\nOverwrite? Y/n: "
+      echo -n "Warning: \`${repository}\` already exists in \`${WORKDIR}\`\nOverwrite? (y/n) [default: yes]: "
       read -r confirm
       confirm=${confirm:-"yes"}
       if [[ $confirm =~ ^[yY](es|ES)?$ ]]; then
@@ -498,11 +498,11 @@ function supported_tools() {
     return
   fi
 
-  # echo -e "Supported tools:"
-  # for tool in "${tools[@]}"; do
-  #   echo -e "- ${tool}"
-  # done
-  # echo -e "- magisk"
+  echo -e "Supported tools:"
+  for tool in "${tools[@]}"; do
+    echo -e "- ${tool}"
+  done
+  echo -e "- magisk"
 }
 
 function help() {
