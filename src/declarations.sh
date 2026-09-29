@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+source src/logger.sh
+
 # Declare associative arrays and variables
 declare -A ADDITIONALS
-declare -A AVBROOT
 declare -A GRAPHENEOS
 declare -A KEYS
 declare -A MAGISK
@@ -10,38 +11,39 @@ declare -A OUTPUTS
 declare -A VERSION
 
 # Build Specifications
-ARCH="x86_64-unknown-linux-gnu" # for Linux
-# ARCH="universal-apple-darwin" # for macOS
-# ARCH="x86_64-pc-windows-msvc" # for Windows
+# `x86_64-unknown-linux-gnu` for Linux, `universal-apple-darwin` for macOS,
+# `x86_64-pc-windows-msvc` for Windows. Override in env.toml.
+ARCH="${ARCH:-x86_64-unknown-linux-gnu}"
 
 # Initial setup environment variables
-CLEANUP="${CLEANUP:-'false'}"                # Clean up after the script finishes
+CLEANUP="${CLEANUP:-false}"                  # Clean up after the script finishes
 DEVICE_NAME="${DEVICE_NAME:-}"               # Device name, passed from the CI environment
+FORCE_UPDATE="${FORCE_UPDATE:-false}"        # Rebuild the current release when a module gets an update
 INTERACTIVE_MODE="${INTERACTIVE_MODE:-true}" # Enable interactive mode
 WORKDIR=".tmp"
 
-# GitHub variables
+# GitHub variables. Override GITHUB_USER and GITHUB_REPO in env.toml for forks.
 DOMAIN="https://github.com"
-REPOSITORY="PixeneOS-komodo" # GitHub repository name
-USER="stopperw"              # GitHub username
+GITHUB_REPO="${GITHUB_REPO:-PixeneOS}"    # GitHub repository name
+GITHUB_USER="${GITHUB_USER:-pixincreate}" # GitHub username
 
 # Application version variables
-VERSION[AFSR]="${VERSION[AFSR]:-1.0.4}"
-VERSION[ALTERINSTALLER]="${VERSION[ALTERINSTALLER]:-2.3}"
-VERSION[AVBROOT]="${VERSION[AVBROOT]:-3.26.1}"
-VERSION[AVBROOT_SETUP]="84139189c8cbe244a676582a3b3517f31fabc421" # Commit hash
-VERSION[BCR]="${VERSION[BCR]:-2.7}"
-VERSION[CUSTOTA]="${VERSION[CUSTOTA]:-5.21}"
+VERSION[AFSR]="${VERSION[AFSR]:-2.0.0}"
+VERSION[ALTERINSTALLER]="${VERSION[ALTERINSTALLER]:-2.4}"
+VERSION[AVBROOT]="${VERSION[AVBROOT]:-3.34.1}"
+VERSION[AVBROOT_SETUP]="4c7d09c0eda8cb03c859d8315ea748e1978a8a35" # Commit hash
+VERSION[BCR]="${VERSION[BCR]:-3.9}"
+VERSION[CUSTOTA]="${VERSION[CUSTOTA]:-6.6}"
 VERSION[GRAPHENEOS]="${VERSION[GRAPHENEOS]:-}"
 VERSION[MAGISK]="${VERSION[MAGISK]:-}"
-VERSION[MSD]="${VERSION[MSD]:-1.21}"
-VERSION[OEMUNLOCKONBOOT]="${VERSION[OEMUNLOCKONBOOT]:-1.3}"
+VERSION[MSD]="${VERSION[MSD]:-2.5}"
+VERSION[OEMUNLOCKONBOOT]="${VERSION[OEMUNLOCKONBOOT]:-1.4}"
 
 # Magisk
 MAGISK[PREINIT]="${MAGISK_PREINIT:-}"
-# MAGISK[REPOSITORY]="${USER}/Magisk"
-MAGISK[REPOSITORY]="pixincreate/Magisk"
-MAGISK[URL]="${DOMAIN}/${MAGISK[REPOSITORY]}"
+# The default fork carries Zygisk fixes for GrapheneOS.
+# Set to `topjohnwu/Magisk` for upstream Magisk.
+MAGISK[REPOSITORY]="${MAGISK_REPOSITORY:-pixincreate/Magisk}"
 
 # Keys
 KEYS[AVB]="${KEYS[AVB]:-avb.key}"
